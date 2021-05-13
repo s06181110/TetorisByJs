@@ -50,7 +50,7 @@ class Main {
             futureMino = this.makeMino()
             // 作った瞬間から動けないなら
             if (!this.isMinoMovable(futureMino, this.field)) {
-                console.log('game over')
+                this.gameOver()
             } else {
                 this.mino = futureMino
             }
@@ -63,6 +63,10 @@ class Main {
 
         this.field.draw()
         this.mino.draw()
+    }
+
+    gameOver () {
+        $("#modal-toggle").click()
     }
 }
 
