@@ -1,5 +1,7 @@
 'use strict';
 
+import { CanvasUtility } from '../utility/canvas.js'
+
 class Block {
     /**
      * 
@@ -11,11 +13,13 @@ class Block {
         this.y = y
     }
 
-    draw(context) {
-        context.strokeStyle = "red"
-        context.fillStyle = "white"
+    draw(fillColor = "white") {
+        const context = CanvasUtility.getCanvasContext("#canvas")
+        context.strokeStyle = "black"
+        context.fillStyle = fillColor
         let size = 42
-        context.fillRect(this.x, this.y, size, size)
+        context.fillRect(this.x * size, this.y * size, size, size)
+        context.strokeRect(this.x * size, this.y * size, size, size)
     }
 
 }
