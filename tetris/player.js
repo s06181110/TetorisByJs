@@ -1,12 +1,15 @@
 'use strict'
 
+import { Main } from './main.js'
+
 class Player {
-    constructor (game) {
+    constructor () {
         this.vx = 0
         this.vr = 0
         this.vy = 0
         this.drop = false
-        this.game = game
+        this.game = new Main()
+        this.loop = setInterval(this.game.update.bind(this.game), this.game.speed)
     }
 
     init () {
@@ -34,5 +37,8 @@ class Player {
         }
     }
 }
+
+const player = new Player()
+$(document).on('keydown', player.keyPressed.bind(player))
 
 export { Player }

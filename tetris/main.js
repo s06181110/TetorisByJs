@@ -2,8 +2,6 @@
 
 import { Field } from './field.js'
 import { Mino } from './mino.js'
-import { Player } from './player.js'
-import { CanvasUtility } from '../utility/canvas.js'
 
 class Main {
     constructor () {
@@ -11,6 +9,8 @@ class Main {
         this.mino = this.makeMino()
         this.field.draw()
         this.mino.draw()
+        this.speed = 500
+        this.score = 0
     }
 
     makeMino () {
@@ -56,10 +56,12 @@ class Main {
             }
         }
 
-        let line;
+        let line, combo = 0;
         while ((line = this.field.findLineFilled()) !== -1) {
             this.field.cutLine(line);
+            combo++
         }
+        this.score += combo * 100
 
         this.field.draw()
         this.mino.draw()
@@ -67,15 +69,11 @@ class Main {
 
     gameOver () {
         $("#modal-toggle").click()
+        $("#score").html("Score: " + this.score)
     }
 }
 
-const main = new Main()
-const player = new Player(main)
-$(document).on('keydown', player.keyPressed.bind(player))
 
-const ms = 500
-let loop = setInterval(main.update.bind(main), ms)
 // デバッグ用 ON/OFFをスペースボタンで
 // $(document).on('keydown', (e) => {
 //     if (e.keyCode === 32) { // stop
@@ -83,4 +81,6 @@ let loop = setInterval(main.update.bind(main), ms)
 //         else loop = setInterval(main.update.bind(main), ms)
 //     }
 // })
+
+export { Main }
 
