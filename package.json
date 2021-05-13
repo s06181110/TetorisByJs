@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon index.js"
+    "browser": "wait-on http://localhost:8080 && opener http://localhost:8080",
+    "dev": "nodemon index.js",
+    "serve": "node index.js",
+    "start": "npm-run-all -p serve browser"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,9 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "opener": "^1.5.2",
+    "wait-on": "^5.3.0"
   }
 }
