@@ -13,8 +13,22 @@
                 <h1 class="display-4">テトリス</h1>
                 <p>こちらは研修課題のため作成されたテトリスである。</p>
                 <hr class="my-4">
-                <p>あそびかたは説明しなくてもわかるよね？</p>
-                <a class="btn btn-primary btn-lg" href="./game.html" role="button">スタート</a>
+                <h3>あそびかた</h3>
+                <div class="container keyboard">
+                    <div class="row">
+                        <div class="col">Q<br><span style="float: right;">左回転</span></div>
+                        <div class="col">W</div>
+                        <div class="col">E<br><span style="float: right;">右回転</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">A<br><span style="float: right;">左移動</span></div>
+                        <div class="col">S<br><span style="float: right;">下移動</span></div>
+                        <div class="col">D<br><span style="float: right;">右移動</span></div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <a class="btn btn-primary btn-lg" href="./game.html" role="button">スタート</a>
+                </div>
             </div>
         </div>
     </div>
@@ -27,5 +41,18 @@
 <style>
 body {
     background-image: url("../images/sample4.jpg");
+}
+
+.keyboard {
+    margin: auto;
+    width: 300px;
+}
+
+.keyboard > div > div {
+    background-color: #333;
+    margin: 2px;
+    color: #eee;
+    width: 30px;
+    height: 50px;
 }
 </style>
