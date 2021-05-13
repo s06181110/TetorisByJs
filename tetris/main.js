@@ -73,14 +73,5 @@ class Main {
     }
 }
 
-
-// デバッグ用 ON/OFFをスペースボタンで
-// $(document).on('keydown', (e) => {
-//     if (e.keyCode === 32) { // stop
-//         if (loop) loop = clearInterval(loop)
-//         else loop = setInterval(main.update.bind(main), ms)
-//     }
-// })
-
 export { Main }
 
