@@ -74,13 +74,13 @@ const main = new Main()
 const player = new Player(main)
 $(document).on('keydown', player.keyPressed.bind(player))
 
-// デバッグ用 ON/OFFをスペースボタンで
 const ms = 500
 let loop = setInterval(main.update.bind(main), ms)
-$(document).on('keydown', (e) => {
-    if (e.keyCode === 32) { // stop
-        if (loop) loop = clearInterval(loop)
-        else loop = setInterval(main.update.bind(main), ms)
-    }
-})
+// デバッグ用 ON/OFFをスペースボタンで
+// $(document).on('keydown', (e) => {
+//     if (e.keyCode === 32) { // stop
+//         if (loop) loop = clearInterval(loop)
+//         else loop = setInterval(main.update.bind(main), ms)
+//     }
+// })
 
