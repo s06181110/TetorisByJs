@@ -10,6 +10,7 @@ app.listen(8080, () => {
 
 
 app.use(express.static(path.join(__dirname, 'html')));
+app.use('/audio', express.static(path.join(__dirname, 'audio')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/tetris', express.static(path.join(__dirname, 'tetris')));
 app.use('/utility', express.static(path.join(__dirname, 'utility')));

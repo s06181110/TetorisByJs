@@ -11,6 +11,11 @@ class Main {
         this.mino.draw()
         this.speed = 500
         this.score = 0
+        this.se = {
+            move: '/audio/se/move.mp3',
+            cantMove: '/audio/se/cantMove.mp3',
+            cutLine: '/audio/se/cutLine.mp3'
+        }
     }
 
     makeMino () {
@@ -20,6 +25,11 @@ class Main {
     isMinoMovable(mino, field) {
         let blocks = mino.calcBlocks();
         return blocks.every(b => field.tileAt(b.x, b.y) === 0)
+    }
+
+    playSE (se) {
+        const audio = new Audio(se)
+        audio.play()
     }
 
     update (player = null) {
@@ -41,6 +51,7 @@ class Main {
         }
 
         if (this.isMinoMovable(futureMino, this.field)) {
+            if (player) this.playSE(this.se.move)
             this.mino = futureMino
         } else if (this.mino.y < futureMino.y) {
             // した方向に動けなかったらブロックを置く
@@ -54,11 +65,14 @@ class Main {
             } else {
                 this.mino = futureMino
             }
+        } else if (player) {
+            this.playSE(this.se.cantMove)
         }
 
         let line, combo = 0;
         while ((line = this.field.findLineFilled()) !== -1) {
             this.field.cutLine(line);
+            this.playSE(this.se.cutLine)
             combo++
         }
         this.score += combo * 100
