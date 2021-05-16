@@ -8,7 +8,7 @@
 $ git clone https://github.com/s06181110/TetorisByJs.git
 ```
 
-## Features
+## Proposal
 - Implement pvp with socket.io
 
 ## Quick Start
